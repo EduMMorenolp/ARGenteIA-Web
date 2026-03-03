@@ -8,7 +8,7 @@ import Footer from './components/Footer/Footer';
 function App() {
   return (
     <RoleProvider>
-      <Router>
+      <Router basename="/ARGenteIA-Web/">
         <RoleModal />
         <div className="app-container">
           <Navbar />
