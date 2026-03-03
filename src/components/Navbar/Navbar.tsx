@@ -4,12 +4,13 @@ import { useRole } from '../../context/RoleContext';
 import './Navbar.css';
 
 const GITHUB_URL = 'https://github.com/EduMMorenolp/ARGenteIA';
-const DOWNLOAD_URL = 'https://github.com/EduMMorenolp/ARGenteIA/archive/refs/heads/master.zip';
+const DOWNLOAD_URL = 'https://github.com/EduMMorenolp/ARGenteIA/archive/refs/heads/main.zip';
 
 const Navbar: React.FC = () => {
     const { role, setRole } = useRole();
     const [mobileOpen, setMobileOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const isDev = role === 'developer';
 
     useEffect(() => {
         const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -25,20 +26,19 @@ const Navbar: React.FC = () => {
         <nav className={`navbar glass-panel ${scrolled ? 'scrolled' : ''}`}>
             <div className="navbar-content">
                 <a href="#" className="navbar-logo" onClick={closeMenu}>
-                    <div className="logo-mark">
-                        <span>IA</span>
-                    </div>
+                    <div className="logo-mark"><span>IA</span></div>
                     <span className="logo-text">ARGenteIA</span>
                 </a>
 
-                {/* Desktop links */}
                 <div className="navbar-links">
                     <a href="#features" className="nav-link">Características</a>
                     <a href="#architecture" className="nav-link">
-                        {role === 'developer' ? 'Arquitectura' : 'Cómo Funciona'}
+                        {isDev ? 'Arquitectura' : 'Cómo Funciona'}
                     </a>
+                    {isDev && <a href="#tools" className="nav-link">Docs</a>}
+                    {isDev && <a href="#changelog" className="nav-link">Changelog</a>}
                     <a href="#tech" className="nav-link">
-                        {role === 'developer' ? 'Tech Stack' : 'Beneficios'}
+                        {isDev ? 'Tech Stack' : 'Beneficios'}
                     </a>
                 </div>
 
@@ -49,7 +49,7 @@ const Navbar: React.FC = () => {
                         title="Cambiar perfil"
                     >
                         <RefreshCw size={14} />
-                        <span>{role === 'developer' ? 'Dev' : 'Usuario'}</span>
+                        <span>{isDev ? 'Dev' : 'Usuario'}</span>
                     </button>
                     <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="btn-secondary nav-btn desktop-only">
                         <Github size={15} />
@@ -58,23 +58,22 @@ const Navbar: React.FC = () => {
                         <Download size={15} />
                         <span>Descargar</span>
                     </a>
-
-                    {/* Mobile hamburger */}
                     <button className="mobile-menu-btn" onClick={() => setMobileOpen(!mobileOpen)}>
                         {mobileOpen ? <X size={22} /> : <Menu size={22} />}
                     </button>
                 </div>
             </div>
 
-            {/* Mobile drawer */}
             {mobileOpen && (
                 <div className="mobile-drawer glass-panel">
                     <a href="#features" className="mobile-link" onClick={closeMenu}>Características</a>
                     <a href="#architecture" className="mobile-link" onClick={closeMenu}>
-                        {role === 'developer' ? 'Arquitectura' : 'Cómo Funciona'}
+                        {isDev ? 'Arquitectura' : 'Cómo Funciona'}
                     </a>
+                    {isDev && <a href="#tools" className="mobile-link" onClick={closeMenu}>Documentación Técnica</a>}
+                    {isDev && <a href="#changelog" className="mobile-link" onClick={closeMenu}>Changelog</a>}
                     <a href="#tech" className="mobile-link" onClick={closeMenu}>
-                        {role === 'developer' ? 'Tech Stack' : 'Beneficios'}
+                        {isDev ? 'Tech Stack' : 'Beneficios'}
                     </a>
                     <div className="mobile-divider"></div>
                     <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="mobile-link" onClick={closeMenu}>
