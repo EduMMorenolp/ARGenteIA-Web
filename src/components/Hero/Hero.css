@@ -76,8 +76,6 @@
 .orb {
   position: absolute;
   border-radius: 50%;
-  border: 1px solid rgba(79, 140, 255, 0.15);
-  background: rgba(79, 140, 255, 0.03);
 }
 
 .orb-1 {
@@ -163,6 +161,10 @@
   margin-bottom: 60px;
 }
 
+.hero-actions a {
+  text-decoration: none;
+}
+
 /* ─── Stats Bar ────────────────────────────────────────────────────────── */
 
 .hero-stats {
@@ -206,24 +208,59 @@
   background: var(--border);
 }
 
-/* ─── Responsive ───────────────────────────────────────────────────────── */
+/* ─── Mobile ───────────────────────────────────────────────────────────── */
 
 @media (max-width: 768px) {
+  .hero-section {
+    padding: 120px 16px 60px;
+    min-height: auto;
+  }
   .hero-title {
-    font-size: 44px;
-    letter-spacing: -1.5px;
+    font-size: 36px;
+    letter-spacing: -1px;
   }
   .hero-subtitle {
-    font-size: 16px;
+    font-size: 15px;
+    margin-bottom: 32px;
+  }
+  .hero-badge {
+    margin-bottom: 24px;
+  }
+  .badge-text {
+    font-size: 11px;
+  }
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 40px;
+  }
+  .hero-actions .btn-primary.lg,
+  .hero-actions .btn-secondary.lg {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 24px;
   }
   .hero-stats {
     flex-wrap: wrap;
-    gap: 8px;
+    justify-content: center;
+    gap: 0;
+    padding: 16px 8px;
+    border-radius: var(--radius-md);
   }
   .stat-divider {
     display: none;
   }
   .stat-item {
-    padding: 12px 20px;
+    padding: 10px 18px;
+    min-width: 45%;
+  }
+  .glow-1 { width: 300px; height: 300px; top: -80px; left: -80px; }
+  .glow-2 { width: 200px; height: 200px; }
+  .glow-3 { display: none; }
+}
+
+@media (max-width: 400px) {
+  .hero-title {
+    font-size: 30px;
   }
 }

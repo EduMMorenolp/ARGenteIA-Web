@@ -60,10 +60,15 @@
   color: var(--text-muted);
 }
 
+/* ─── Mobile ───────────────────────────────────────────────────────────── */
+
 @media (max-width: 900px) {
   .tech-grid { grid-template-columns: repeat(2, 1fr); }
+  .tech-section { padding: 60px 16px; }
 }
 
 @media (max-width: 500px) {
-  .tech-grid { grid-template-columns: 1fr; }
+  .tech-grid { grid-template-columns: 1fr; gap: 10px; }
+  .tech-item { padding: 16px; }
+  .tech-item:hover { transform: none; }
 }

@@ -59,9 +59,7 @@
   justify-content: center;
 }
 
-.cta-actions a {
-  text-decoration: none;
-}
+.cta-actions a { text-decoration: none; }
 
 /* ─── Contribute Card ──────────────────────────────────────────────────── */
 
@@ -141,14 +139,32 @@
   transform: translateY(-1px);
 }
 
+/* ─── Mobile ───────────────────────────────────────────────────────────── */
+
 @media (max-width: 768px) {
-  .cta-title { font-size: 30px; }
+  .cta-section { padding: 60px 16px; }
+  .cta-title { font-size: 28px; letter-spacing: -1px; }
+  .cta-subtitle { font-size: 15px; }
+  .cta-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  .cta-actions a {
+    width: 100%;
+    justify-content: center;
+  }
   .contribute-card {
     flex-direction: column;
     text-align: center;
+    padding: 24px 20px;
+    margin-top: 28px;
   }
   .contribute-content {
     flex-direction: column;
     text-align: center;
+  }
+  .btn-contribute {
+    width: 100%;
+    justify-content: center;
   }
 }
