@@ -1,0 +1,154 @@
+.cta-section {
+  position: relative;
+  padding: 120px 24px;
+  overflow: hidden;
+  background: var(--bg-sidebar);
+}
+
+.cta-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.cta-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: var(--accent);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(160px);
+  opacity: 0.08;
+}
+
+.cta-container {
+  position: relative;
+  z-index: 10;
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.cta-title {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  line-height: 1.2;
+  color: var(--text-main);
+}
+
+.cta-subtitle {
+  font-size: 17px;
+  color: var(--text-dim);
+  line-height: 1.7;
+  max-width: 560px;
+}
+
+.cta-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cta-actions a {
+  text-decoration: none;
+}
+
+/* ─── Contribute Card ──────────────────────────────────────────────────── */
+
+.contribute-card {
+  margin-top: 40px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  max-width: 620px;
+  transition: var(--transition);
+}
+
+.contribute-card:hover {
+  border-color: rgba(239, 68, 68, 0.3);
+  box-shadow: 0 8px 30px rgba(239, 68, 68, 0.08);
+}
+
+.contribute-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-align: left;
+}
+
+.contribute-heart {
+  color: #ef4444;
+  fill: #ef4444;
+  flex-shrink: 0;
+}
+
+.contribute-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.contribute-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.contribute-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.btn-contribute {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-main);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.btn-contribute:hover {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.4);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .cta-title { font-size: 30px; }
+  .contribute-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  .contribute-content {
+    flex-direction: column;
+    text-align: center;
+  }
+}
