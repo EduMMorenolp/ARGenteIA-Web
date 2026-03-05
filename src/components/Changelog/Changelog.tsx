@@ -1,10 +1,16 @@
-import React from 'react';
-import { GitCommitHorizontal, Plus, Wrench, Bug, Loader } from 'lucide-react';
+import React, { useState } from 'react';
+import { GitCommitHorizontal, Plus, Wrench, Bug, Loader, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useChangelog } from '../../hooks/useGitHubContent';
 import './Changelog.css';
 
 const Changelog: React.FC = () => {
     const { entries, loading, error } = useChangelog();
+    const [current, setCurrent] = useState(0);
+
+    const prev = () => setCurrent((c) => Math.max(0, c - 1));
+    const next = () => setCurrent((c) => Math.min(entries.length - 1, c + 1));
+
+    const entry = entries[current];
 
     return (
         <section id="changelog" className="changelog-section">
@@ -13,7 +19,7 @@ const Changelog: React.FC = () => {
                     <span className="section-tag">Changelog</span>
                     <h2 className="section-title text-gradient">Historial de Versiones</h2>
                     <p className="section-subtitle">
-                        Evolución del proyecto con cada release. Datos obtenidos en tiempo real desde el repositorio en GitHub.
+                        Evolución del proyecto con cada release. Datos obtenidos en tiempo real desde GitHub.
                     </p>
                 </div>
 
@@ -30,9 +36,42 @@ const Changelog: React.FC = () => {
                     </div>
                 )}
 
-                <div className="changelog-timeline">
-                    {entries.map((entry, idx) => (
-                        <div className="changelog-entry reveal" key={idx} style={{ animationDelay: `${idx * 0.08}s` }}>
+                {entry && (
+                    <div className="changelog-carousel reveal">
+                        {/* Navigation */}
+                        <div className="carousel-nav">
+                            <button
+                                className="carousel-btn"
+                                onClick={prev}
+                                disabled={current === 0}
+                                aria-label="Versión anterior"
+                            >
+                                <ChevronLeft size={20} />
+                            </button>
+
+                            <div className="carousel-indicator">
+                                {entries.map((e, idx) => (
+                                    <button
+                                        key={idx}
+                                        className={`carousel-dot ${idx === current ? 'active' : ''}`}
+                                        onClick={() => setCurrent(idx)}
+                                        title={`v${e.version}`}
+                                    />
+                                ))}
+                            </div>
+
+                            <button
+                                className="carousel-btn"
+                                onClick={next}
+                                disabled={current === entries.length - 1}
+                                aria-label="Versión siguiente"
+                            >
+                                <ChevronRight size={20} />
+                            </button>
+                        </div>
+
+                        {/* Card */}
+                        <div className="changelog-card">
                             <div className="changelog-header">
                                 <div className="version-badge">
                                     <GitCommitHorizontal size={14} />
@@ -68,8 +107,13 @@ const Changelog: React.FC = () => {
                                 )}
                             </div>
                         </div>
-                    ))}
-                </div>
+
+                        {/* Version counter */}
+                        <div className="carousel-counter">
+                            {current + 1} / {entries.length}
+                        </div>
+                    </div>
+                )}
             </div>
         </section>
     );

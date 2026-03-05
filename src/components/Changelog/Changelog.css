@@ -21,48 +21,98 @@
 
 .changelog-error { color: #ef4444; }
 
-.changelog-timeline {
+/* ─── Carousel ─────────────────────────────────────────────────────────── */
+
+.changelog-carousel {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  position: relative;
+  align-items: center;
+  gap: 20px;
 }
 
-.changelog-timeline::before {
-  content: '';
-  position: absolute;
-  left: 16px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(180deg, var(--accent), var(--border), transparent);
-  opacity: 0.3;
+.carousel-nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
-.changelog-entry {
+.carousel-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.carousel-btn:hover:not(:disabled) {
+  background: var(--bg-input);
+  color: var(--accent);
+  border-color: var(--accent);
+  transform: scale(1.05);
+}
+
+.carousel-btn:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.carousel-indicator {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background: transparent;
+  cursor: pointer;
+  transition: var(--transition);
+  padding: 0;
+}
+
+.carousel-dot:hover {
+  border-color: var(--accent);
+}
+
+.carousel-dot.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: scale(1.2);
+}
+
+/* ─── Card ──────────────────────────────────────────────────────────────── */
+
+.changelog-card {
+  width: 100%;
   background: var(--bg-surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   overflow: hidden;
-  margin-left: 36px;
   transition: var(--transition);
-  position: relative;
+  animation: fadeSlide 0.3s ease-out;
 }
 
-.changelog-entry::before {
-  content: '';
-  position: absolute;
-  left: -28px;
-  top: 24px;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--accent);
-  border: 2px solid var(--bg-dark);
-  z-index: 1;
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-.changelog-entry:hover {
+.changelog-card:hover {
   border-color: var(--border-hover);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
@@ -97,6 +147,21 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.changelog-body::-webkit-scrollbar {
+  width: 4px;
+}
+
+.changelog-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.changelog-body::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
 }
 
 .changelog-group {
@@ -157,14 +222,18 @@
   font-weight: 700;
 }
 
+.carousel-counter {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
 /* ─── Mobile ───────────────────────────────────────────────────────────── */
 
 @media (max-width: 768px) {
   .changelog-section { padding: 60px 16px; }
-  .changelog-timeline::before { left: 10px; }
-  .changelog-entry { margin-left: 28px; }
-  .changelog-entry::before { left: -22px; }
   .changelog-header { padding: 12px 16px; }
-  .changelog-body { padding: 16px; }
-  .section-header code { font-size: 12px; }
+  .changelog-body { padding: 16px; max-height: 380px; }
+  .carousel-btn { width: 36px; height: 36px; }
+  .carousel-dot { width: 8px; height: 8px; }
 }
