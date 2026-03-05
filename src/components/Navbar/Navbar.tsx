@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Github, Download, RefreshCw, Menu, X } from 'lucide-react';
+import { Github, Download, RefreshCw, Menu, X, Heart } from 'lucide-react';
 import { useRole } from '../../context/RoleContext';
 import './Navbar.css';
 
 const GITHUB_URL = 'https://github.com/EduMMorenolp/ARGenteIA';
 const DOWNLOAD_URL = 'https://github.com/EduMMorenolp/ARGenteIA/archive/refs/heads/main.zip';
+const DONATE_URL = 'https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=28d98c980e904ecca443cf42b689a205';
 
 const Navbar: React.FC = () => {
     const { role, setRole } = useRole();
@@ -58,6 +59,10 @@ const Navbar: React.FC = () => {
                         <Download size={15} />
                         <span>Descargar</span>
                     </a>
+                    <a href={DONATE_URL} target="_blank" rel="noopener noreferrer" className="btn-donate nav-btn desktop-only">
+                        <Heart size={15} />
+                        <span>Donar</span>
+                    </a>
                     <button className="mobile-menu-btn" onClick={() => setMobileOpen(!mobileOpen)}>
                         {mobileOpen ? <X size={22} /> : <Menu size={22} />}
                     </button>
@@ -81,6 +86,9 @@ const Navbar: React.FC = () => {
                     </a>
                     <a href={DOWNLOAD_URL} className="mobile-link" onClick={closeMenu} download>
                         <Download size={16} /> Descargar
+                    </a>
+                    <a href={DONATE_URL} target="_blank" rel="noopener noreferrer" className="mobile-link donate-link" onClick={closeMenu}>
+                        <Heart size={16} /> Donar
                     </a>
                 </div>
             )}

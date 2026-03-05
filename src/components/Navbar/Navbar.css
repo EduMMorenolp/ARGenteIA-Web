@@ -165,6 +165,34 @@
   margin: 8px 0;
 }
 
+.btn-donate {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #e84393, #fd79a8);
+  color: #fff !important;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.btn-donate:hover {
+  background: linear-gradient(135deg, #fd79a8, #e84393);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(232, 67, 147, 0.35);
+}
+
+.donate-link {
+  color: #fd79a8 !important;
+}
+
+.donate-link:hover {
+  color: #e84393 !important;
+}
+
 .desktop-only { display: inline-flex; }
 
 /* ─── Mobile Breakpoint ────────────────────────────────────────────────── */
