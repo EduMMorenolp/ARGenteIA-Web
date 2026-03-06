@@ -2,7 +2,7 @@ import React from 'react';
 import { Download, MousePointerClick, Settings, Rocket } from 'lucide-react';
 import './InstallGuide.css';
 
-const DOWNLOAD_URL = 'https://github.com/EduMMorenolp/ARGenteIA/archive/refs/heads/main.zip';
+const DOWNLOAD_URL = 'https://github.com/EduMMorenolp/ARGenteIA/archive/refs/heads/master.zip';
 
 const steps = [
     {

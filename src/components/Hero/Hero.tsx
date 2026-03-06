@@ -4,7 +4,7 @@ import { useRole } from '../../context/RoleContext';
 import './Hero.css';
 
 const GITHUB_URL = 'https://github.com/EduMMorenolp/ARGenteIA';
-const DOWNLOAD_URL = 'https://github.com/EduMMorenolp/ARGenteIA/archive/refs/heads/main.zip';
+const DOWNLOAD_URL = 'https://github.com/EduMMorenolp/ARGenteIA/archive/refs/heads/master.zip';
 
 const Hero: React.FC = () => {
     const { role } = useRole();

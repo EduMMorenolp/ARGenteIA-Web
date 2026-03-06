@@ -4,7 +4,7 @@ import { useRole } from '../../context/RoleContext';
 import './Navbar.css';
 
 const GITHUB_URL = 'https://github.com/EduMMorenolp/ARGenteIA';
-const DOWNLOAD_URL = 'https://github.com/EduMMorenolp/ARGenteIA/archive/refs/heads/main.zip';
+const DOWNLOAD_URL = 'https://github.com/EduMMorenolp/ARGenteIA/archive/refs/heads/master.zip';
 const DONATE_URL = 'https://www.mercadopago.com.ar/subscriptions/checkout?preapproval_plan_id=28d98c980e904ecca443cf42b689a205';
 
 const Navbar: React.FC = () => {
