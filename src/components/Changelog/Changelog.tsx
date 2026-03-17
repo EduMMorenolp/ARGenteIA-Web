@@ -21,6 +21,9 @@ const Changelog: React.FC = () => {
                     <p className="section-subtitle">
                         Evolución del proyecto con cada release. Datos obtenidos en tiempo real desde GitHub.
                     </p>
+                    <button className="section-tag" onClick={() => window.open('https://github.com/EduMMorenolp/ARGenteIA/blob/master/CHANGELOG.md', '_blank')} style={{ margin: '10px', cursor: 'pointer' }}>
+                        Ver en GitHub
+                    </button>
                 </div>
 
                 {loading && (
