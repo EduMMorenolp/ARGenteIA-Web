@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const RAW_BASE = 'https://raw.githubusercontent.com/EduMMorenolp/ARGenteIA/master';
+const DOCS_BASE = '/docs';
 
 /* ═══════════════════════════════════════════════════════════════════════════
    CHANGELOG HOOK
@@ -58,7 +58,7 @@ export function useChangelog() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch(`${RAW_BASE}/CHANGELOG.md`)
+    fetch(`${DOCS_BASE}/CHANGELOG.md`)
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.text();
@@ -179,7 +179,7 @@ export function useDocs(filenames: string[]) {
   useEffect(() => {
     Promise.all(
       filenames.map((f) =>
-        fetch(`${RAW_BASE}/docs/${f}`)
+        fetch(`${DOCS_BASE}/${f}`)
           .then((res) => {
             if (!res.ok) throw new Error(`HTTP ${res.status}: ${f}`);
             return res.text();
